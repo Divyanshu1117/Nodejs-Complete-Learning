@@ -6,7 +6,7 @@ let q = url.parse(adr, true);
 
 console.log("Host:", q.host);
 console.log("Pathname:", q.pathname);
-console.log("Search:",q.search);
+console.log("Search:", q.search);
 
 let qdata = q.query;
 console.log(q.query.name);

@@ -1,3 +1,3 @@
-exports.add = function(n, m) {
+exports.add = function (n, m) {
     return n + m;
 };

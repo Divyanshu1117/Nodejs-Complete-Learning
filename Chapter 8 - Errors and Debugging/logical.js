@@ -1,7 +1,7 @@
 const logical = () => {
     let num = 5;
     if (num = 10) { // Assignment instead of comparison
-    // if (num == 10) {
+        // if (num == 10) {
         console.log(num) // Incorrectly prints this
     } else {
         console.log("Num is not 10");
