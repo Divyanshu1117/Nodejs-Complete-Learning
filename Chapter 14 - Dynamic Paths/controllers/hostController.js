@@ -7,7 +7,7 @@ const Home = require("../models/home");
 // exports.getAddHome = getAddHome;
 
 exports.getAddHome = (req, res, next) => {
-    res.render('addHome', { pageTitle: "Add Home to airbnb", currentPage: "addHome" });
+    res.render('host/addHome', { pageTitle: "Add Home to airbnb", currentPage: "addHome" });
 };
 
 exports.postAddHome = (req, res, next) => {
@@ -21,19 +21,31 @@ exports.postAddHome = (req, res, next) => {
 
     home.save();
 
-    res.render('homeAdded', { pageTitle: 'Home Added Successfully', currentPage: 'homeAdded' });
+    res.render('host/home-Added', { pageTitle: 'Home Added Successfully', currentPage: 'homeAdded' });
 };
 
-exports.getHomes = (req, res, next) => {
+exports.getHostHomes = (req, res, next) => {
     Home.fetchAll((registeredHomes) => {
-        res.render("home", {
+        res.render("host/host-home-list", {
             registeredHomes: registeredHomes,
-            pageTitle: "airbnb Home",
-            currentPage: "Home",
+            pageTitle: "Host Homes List",
+            currentPage: "host-homes",
         });
     });
     // console.log(registeredHomes);
     // res.render('home', { registeredHomes: registeredHomes, pageTitle: 'airbnb Home', currentPage: 'Home' });
 };
+
+// exports.getHomes = (req, res, next) => {
+//     Home.fetchAll((registeredHomes) => {
+//         res.render("store/home-list", {
+//             registeredHomes: registeredHomes,
+//             pageTitle: "airbnb Home",
+//             currentPage: "Home",
+//         });
+//     });
+//     // console.log(registeredHomes);
+//     // res.render('home', { registeredHomes: registeredHomes, pageTitle: 'airbnb Home', currentPage: 'Home' });
+// };
 
 // // exports.registeredHomes = registeredHomes;
