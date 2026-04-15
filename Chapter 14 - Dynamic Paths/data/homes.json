@@ -1,1 +1,34 @@
-[{"houseName":"Cold","price":"999","location":"Haryana","rating":"5","photoUrl":"https://media.cntraveler.com/photos/5d112d50c4d7bd806dbc00a4/16:9/w_2560%2Cc_limit/airbnb%2520luxe.jpg","id":"0.36055094959221523"},{"houseName":"Divyanshu","price":"999","location":"Haryana","rating":"4.5","photoUrl":"https://media.cntraveler.com/photos/5d112d50c4d7bd806dbc00a4/16:9/w_2560%2Cc_limit/airbnb%2520luxe.jpg","id":"0.595079125845688"},{"houseName":"Pasha","price":"999","location":"Haryana","rating":"5","photoUrl":"https://media.cntraveler.com/photos/5d112d50c4d7bd806dbc00a4/16:9/w_2560%2Cc_limit/airbnb%2520luxe.jpg","id":"0.49007317118053684"},{"houseName":"Lovish","price":"999","location":"Jagadhri","rating":"5","photoUrl":"https://media.cntraveler.com/photos/5d112d50c4d7bd806dbc00a4/16:9/w_2560%2Cc_limit/airbnb%2520luxe.jpg","id":"0.38088029839009585"}]
+[
+    {
+        "houseName": "Cold",
+        "price": "999",
+        "location": "Haryana",
+        "rating": "5",
+        "photoUrl": "https://media.cntraveler.com/photos/5d112d50c4d7bd806dbc00a4/16:9/w_2560%2Cc_limit/airbnb%2520luxe.jpg",
+        "id": "0.36055094959221523"
+    },
+    {
+        "houseName": "Divyanshu",
+        "price": "999",
+        "location": "Haryana",
+        "rating": "4.5",
+        "photoUrl": "https://media.cntraveler.com/photos/5d112d50c4d7bd806dbc00a4/16:9/w_2560%2Cc_limit/airbnb%2520luxe.jpg",
+        "id": "0.595079125845688"
+    },
+    {
+        "houseName": "Pasha",
+        "price": "999",
+        "location": "Haryana",
+        "rating": "5",
+        "photoUrl": "https://media.cntraveler.com/photos/5d112d50c4d7bd806dbc00a4/16:9/w_2560%2Cc_limit/airbnb%2520luxe.jpg",
+        "id": "0.49007317118053684"
+    },
+    {
+        "houseName": "Lovish",
+        "price": "999",
+        "location": "Jagadhri",
+        "rating": "5",
+        "photoUrl": "https://media.cntraveler.com/photos/5d112d50c4d7bd806dbc00a4/16:9/w_2560%2Cc_limit/airbnb%2520luxe.jpg",
+        "id": "0.38088029839009585"
+    }
+]
