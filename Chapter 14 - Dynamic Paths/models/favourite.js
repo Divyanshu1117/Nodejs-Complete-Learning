@@ -2,7 +2,6 @@
 const fs = require("fs");
 const path = require("path");
 const rootDir = require("../utils/pathUtil");
-
 const favouriteDataPath = path.join(rootDir, "data", "favourite.json");
 
 module.exports = class Favourite {

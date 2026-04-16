@@ -3,7 +3,6 @@ const fs = require("fs");
 const path = require("path");
 const rootDir = require("../utils/pathUtil");
 const Favourite = require("./favourite");
-
 const homeDataPath = path.join(rootDir, "data", "homes.json");
 
 module.exports = class Home {
@@ -17,10 +16,10 @@ module.exports = class Home {
 
   save() {
     Home.fetchAll((registeredHomes) => {
-      if (this.id) { // edit home case
+      if (this.id) { // Edit home case:-
         registeredHomes = registeredHomes.map(home =>
           home.id === this.id ? this : home);
-      } else { // add home case
+      } else { // Add home case:-
         this.id = Math.random().toString();
         registeredHomes.push(this);
       }
