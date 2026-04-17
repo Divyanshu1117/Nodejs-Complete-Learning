@@ -23,7 +23,6 @@ module.exports = class Home {
         this.id = Math.random().toString();
         registeredHomes.push(this);
       }
-
       fs.writeFile(homeDataPath, JSON.stringify(registeredHomes), (error) => {
         console.log("File Writing Concluded", error);
       });

@@ -1,1 +1,10 @@
-[{"houseName":"Cold","price":"999","location":"Haryana","rating":"4.5","photoUrl":"/images/house5.png","id":"0.8218562440235841"}]
+[
+    {
+        "houseName": "Cold",
+        "price": "999",
+        "location": "Haryana",
+        "rating": "4.5",
+        "photoUrl": "/images/house5.png",
+        "id": "0.8218562440235841"
+    }
+]
