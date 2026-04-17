@@ -1,4 +1,3 @@
-// Core Modules
 const db = require("../utils/databaseUtil");
 
 module.exports = class Home {
