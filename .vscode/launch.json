@@ -15,7 +15,6 @@
             "restart": true,
             "runtimeExecutable": "nodemon",
             "console": "integratedTerminal"
-
         }
     ]
 }
