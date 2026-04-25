@@ -1,0 +1,331 @@
+<%- include('../partials/head') %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      background: white;
+      min-height: 100vh;
+    }
+
+    .form-card {
+      background: white;
+      border-radius: 0;
+      box-shadow: none;
+      backdrop-filter: blur(10px);
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper input {
+      padding-left: 45px;
+      transition: all 0.3s ease;
+      border: 2px solid #e5e7eb;
+      border-radius: 0;
+    }
+
+    .input-wrapper input:focus {
+      border-color: #dc2626;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+      font-size: 18px;
+    }
+
+    .input-wrapper input:focus~.input-icon {
+      color: #dc2626;
+    }
+
+    .radio-option {
+      position: relative;
+      cursor: pointer;
+    }
+
+    .radio-option input[type="radio"] {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #d1d5db;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .radio-option input[type="radio"]:checked {
+      border-color: #3b82f6;
+      background: #3b82f6;
+      box-shadow: inset 0 0 0 3px white;
+    }
+
+    .checkbox-option input[type="checkbox"] {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #d1d5db;
+      border-radius: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .checkbox-option input[type="checkbox"]::after {
+      content: '✓';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .checkbox-option input[type="checkbox"]:checked {
+      border-color: #3b82f6;
+      background: #3b82f6;
+      box-shadow: inset 0 0 0 2px white;
+    }
+
+    .checkbox-option input[type="checkbox"]:checked::after {
+      opacity: 1;
+    }
+
+    .submit-btn {
+      background: #dc2626;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #b91c1c;
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    .submit-btn:hover::before {
+      left: 0;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(220, 38, 38, 0.4);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .form-title {
+      color: #dc2626;
+    }
+
+    .link-accent {
+      color: #dc2626;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border-bottom: 2px solid transparent;
+    }
+
+    .link-accent:hover {
+      border-bottom-color: #dc2626;
+    }
+
+    .user-type-section {
+      background: white;
+      border: 2px solid #e5e7eb;
+      border-radius: 0;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .success-check {
+      color: #667eea;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-card {
+      animation: slideInUp 0.6s ease-out;
+    }
+
+    .form-group {
+      animation: slideInUp 0.6s ease-out forwards;
+      opacity: 0;
+    }
+
+    .form-group:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .form-group:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .form-group:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .form-group:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .form-group:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    .form-group:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+
+    .form-group:nth-child(7) {
+      animation-delay: 0.7s;
+    }
+  </style>
+  </head>
+
+  <body>
+    <%- include('../partials/nav') %>
+
+      <main class="min-h-screen flex items-center justify-center py-12 px-4">
+        <div class="form-card w-full max-w-md">
+          <!-- Header -->
+          <div class="px-8 pt-8 pb-6">
+            <div class="text-center mb-2">
+              <i class="fas fa-user-plus text-4xl text-gray-300 mb-4 block"></i>
+              <h1 class="text-3xl font-bold form-title">Create Account</h1>
+              <p class="text-gray-500 text-sm mt-2">Join us and start your journey today</p>
+            </div>
+          </div>
+
+          <form action="/signup" method="POST" class="px-8 pb-8">
+            <%- include('../partials/errors') %>
+
+              <!-- First & Last Name -->
+              <div class="form-group flex gap-4 mb-6">
+                <!-- First Name -->
+                <div class="flex-1">
+                  <label class="block text-sm font-semibold mb-2 text-gray-700">First Name</label>
+                  <div class="input-wrapper">
+                    <input type="text" name="firstName" placeholder="John" value="<%= oldInput.firstName || '' %>"
+                      class="w-full px-4 py-3 border focus:outline-none transition" required />
+                    <i class="fas fa-user input-icon"></i>
+                  </div>
+                </div>
+
+                <!-- Last Name -->
+                <div class="flex-1">
+                  <label class="block text-sm font-semibold mb-2 text-gray-700">Last Name</label>
+                  <div class="input-wrapper">
+                    <input type="text" name="lastName" placeholder="Doe" value="<%= oldInput.lastName || '' %>"
+                      class="w-full px-4 py-3 border focus:outline-none transition" />
+                    <i class="fas fa-user input-icon"></i>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="form-group mb-6">
+                <label class="block text-sm font-semibold mb-2 text-gray-700">Email Address</label>
+                <div class="input-wrapper">
+                  <input type="email" name="email" placeholder="your.email@example.com"
+                    value="<%= oldInput.email || '' %>" class="w-full px-4 py-3 border focus:outline-none transition"
+                    required />
+                  <i class="fas fa-envelope input-icon"></i>
+                </div>
+              </div>
+
+              <!-- Password -->
+              <div class="form-group mb-6">
+                <label class="block text-sm font-semibold mb-2 text-gray-700">Password</label>
+                <div class="input-wrapper">
+                  <input type="password" name="password" id="password" placeholder="Enter your password"
+                    class="w-full px-4 py-3 border focus:outline-none transition" required />
+                  <i class="fas fa-lock input-icon"></i>
+                </div>
+                <p class="text-xs text-gray-500 mt-1">At least 8 characters recommended</p>
+              </div>
+
+              <!-- Confirm Password -->
+              <div class="form-group mb-6">
+                <label class="block text-sm font-semibold mb-2 text-gray-700">Confirm Password</label>
+                <div class="input-wrapper">
+                  <input type="password" name="confirmPassword" placeholder="Confirm your password"
+                    class="w-full px-4 py-3 border focus:outline-none transition" required />
+                  <i class="fas fa-lock input-icon"></i>
+                </div>
+              </div>
+
+              <!-- User Type -->
+              <div class="form-group mb-6">
+                <label class="block text-sm font-semibold mb-3 text-gray-700">Account Type</label>
+                <div class="user-type-section">
+                  <div class="flex gap-8">
+                    <label class="radio-option flex items-center cursor-pointer">
+                      <input type="radio" name="userType" value="guest" checked>
+                      <span class="ml-3 font-medium text-gray-700">
+                        <i class="fas fa-user-tie mr-1 text-red-500"></i> Guest
+                      </span>
+                    </label>
+                    <label class="radio-option flex items-center cursor-pointer">
+                      <input type="radio" name="userType" value="host">
+                      <span class="ml-3 font-medium text-gray-700">
+                        <i class="fas fa-home mr-1 text-red-500"></i> Host
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Terms & Conditions -->
+              <div class="form-group mb-6">
+                <label class="checkbox-option flex items-center cursor-pointer">
+                  <input type="checkbox" required>
+                  <span class="ml-3 text-sm text-gray-700">
+                    I agree to the <a href="#" class="link-accent">terms and conditions</a>
+                  </span>
+                </label>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit"
+                class="form-group submit-btn w-full text-white font-semibold py-3 flex justify-center items-center hover:shadow-lg transition">
+                <i class="fas fa-check mr-2"></i> Create Account
+              </button>
+
+              <!-- Login Link -->
+              <p class="form-group text-center text-gray-600 text-sm mt-6">
+                Already have an account?
+                <a href="/login" class="link-accent">Sign in here</a>
+              </p>
+          </form>
+        </div>
+      </main>
+
+  </body>
+
+  </html>
