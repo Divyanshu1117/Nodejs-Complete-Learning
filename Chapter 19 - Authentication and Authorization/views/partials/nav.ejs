@@ -19,52 +19,57 @@
 
           <% if (isLoggedIn) { %>
 
-            <!-- HOMES -->
-            <li>
-              <a href="/homes" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+            <% if (user && user.userType==='guest' ) { %>
+
+              <!-- HOMES -->
+              <li>
+                <a href="/homes" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
               <%= currentPage === 'Home' ? 'bg-white text-red-500 shadow-md' : 'text-white hover:bg-red-600' %>">
-                <i class="fas fa-list text-xs"></i>
-                Homes
-              </a>
-            </li>
+                  <i class="fas fa-list text-xs"></i>
+                  Homes
+                </a>
+              </li>
 
-            <!-- FAVOURITES -->
-            <li>
-              <a href="/favourites" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+              <!-- FAVOURITES -->
+              <li>
+                <a href="/favourites" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
               <%= currentPage === 'favourites' ? 'bg-white text-red-500 shadow-md' : 'text-white hover:bg-red-600' %>">
-                <i class="fas fa-heart text-xs"></i>
-                Favourites
-              </a>
-            </li>
+                  <i class="fas fa-heart text-xs"></i>
+                  Favourites
+                </a>
+              </li>
 
-            <!-- BOOKINGS -->
-            <li>
-              <a href="/bookings" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+              <!-- BOOKINGS -->
+              <li>
+                <a href="/bookings" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
               <%= currentPage === 'bookings' ? 'bg-white text-red-500 shadow-md' : 'text-white hover:bg-red-600' %>">
-                <i class="fas fa-calendar text-xs"></i>
-                Bookings
-              </a>
-            </li>
+                  <i class="fas fa-calendar text-xs"></i>
+                  Bookings
+                </a>
+              </li>
 
-            <!-- MY HOMES -->
-            <li>
-              <a href="/host/host-home-list" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+              <% } else { %>
+
+                <!-- Host HOMES -->
+                <li>
+                  <a href="/host/host-home-list" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
               <%= currentPage === 'host-homes' ? 'bg-white text-red-500 shadow-md' : 'text-white hover:bg-red-600' %>">
-                <i class="fas fa-building text-xs"></i>
-                My Homes
-              </a>
-            </li>
+                    <i class="fas fa-building text-xs"></i>
+                    Host Homes
+                  </a>
+                </li>
 
-            <!-- ADD HOME -->
-            <li>
-              <a href="/host/add-home" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+                <!-- ADD HOME -->
+                <li>
+                  <a href="/host/add-home" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
               <%= currentPage === 'addHome' ? 'bg-white text-red-500 shadow-md' : 'text-white hover:bg-red-600' %>">
-                <i class="fas fa-plus text-xs"></i>
-                Add Home
-              </a>
-            </li>
+                    <i class="fas fa-plus text-xs"></i>
+                    Add Home
+                  </a>
+                </li>
 
-            <% } %>
+                <% } %>
+                  <% } %>
 
         </ul>
       </div>
