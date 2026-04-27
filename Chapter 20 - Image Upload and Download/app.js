@@ -6,6 +6,7 @@ const express = require('express');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const { default: mongoose } = require('mongoose');
+const multer = require('multer');
 const DB_PATH = "mongodb+srv://root:mongodb@completecoding.jdagmyl.mongodb.net/airbnb?appName=CompleteCoding";
 
 //Local Module
@@ -14,6 +15,7 @@ const hostRouter = require("./routes/hostRouter");
 const authRouter = require("./routes/authRouter");
 const rootDir = require("./utils/pathUtil");
 const errorsController = require("./controllers/errors");
+
 
 const app = express();
 
@@ -25,7 +27,39 @@ const store = new MongoDBStore({
   collection: 'sessions',
 });
 
+const randomString = (length) => {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+};
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, randomString(10) + '-' + file.originalname);
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+const multerOptions = {
+  storage, fileFilter,
+};
+
 app.use(express.urlencoded());
+app.use(multer(multerOptions).single('photo'));
+app.use(express.static(path.join(rootDir, 'public')))
 
 app.use(session({
   secret: "KnowledgeGate AI with Complete Coding",
@@ -53,7 +87,6 @@ app.use("/host", (req, res, next) => {
 });
 
 app.use("/host", hostRouter);
-app.use(express.static(path.join(rootDir, 'public')));
 app.use(errorsController.pageNotFound);
 
 const PORT = 3000;

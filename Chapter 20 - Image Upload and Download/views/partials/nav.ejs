@@ -1,0 +1,117 @@
+<header class="bg-red-500 text-white shadow-lg shadow-red-300/40 sticky top-0 z-50">
+
+  <nav class="max-w-7xl mx-auto px-6 py-3">
+    <div class="flex justify-between items-center">
+
+      <!-- LEFT SIDE -->
+      <div class="flex items-center gap-8">
+
+        <!-- LOGO -->
+        <a href="/" class="flex items-center gap-2 group">
+          <i class="fas fa-home text-white text-2xl transition duration-300 group-hover:scale-110"></i>
+          <span class="text-2xl font-bold tracking-wide group-hover:text-gray-200 transition">
+            airbnb
+          </span>
+        </a>
+
+        <!-- NAV LINKS -->
+        <ul class="flex items-center gap-2">
+
+          <% if (isLoggedIn) { %>
+
+            <% if (user && user.userType==='guest' ) { %>
+
+              <!-- HOMES -->
+              <li>
+                <a href="/homes" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+              <%= currentPage === 'Home' ? 'bg-white text-red-500 shadow-md' : 'text-white hover:bg-red-600' %>">
+                  <i class="fas fa-list text-xs"></i>
+                  Homes
+                </a>
+              </li>
+
+              <!-- FAVOURITES -->
+              <li>
+                <a href="/favourites" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+              <%= currentPage === 'favourites' ? 'bg-white text-red-500 shadow-md' : 'text-white hover:bg-red-600' %>">
+                  <i class="fas fa-heart text-xs"></i>
+                  Favourites
+                </a>
+              </li>
+
+              <!-- BOOKINGS -->
+              <li>
+                <a href="/bookings" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+              <%= currentPage === 'bookings' ? 'bg-white text-red-500 shadow-md' : 'text-white hover:bg-red-600' %>">
+                  <i class="fas fa-calendar text-xs"></i>
+                  Bookings
+                </a>
+              </li>
+
+              <% } else { %>
+
+                <!-- Host HOMES -->
+                <li>
+                  <a href="/host/host-home-list" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+              <%= currentPage === 'host-homes' ? 'bg-white text-red-500 shadow-md' : 'text-white hover:bg-red-600' %>">
+                    <i class="fas fa-building text-xs"></i>
+                    Host Homes
+                  </a>
+                </li>
+
+                <!-- ADD HOME -->
+                <li>
+                  <a href="/host/add-home" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+              <%= currentPage === 'addHome' ? 'bg-white text-red-500 shadow-md' : 'text-white hover:bg-red-600' %>">
+                    <i class="fas fa-plus text-xs"></i>
+                    Add Home
+                  </a>
+                </li>
+
+                <% } %>
+                  <% } %>
+
+        </ul>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <ul class="flex items-center gap-3">
+
+        <% if (!isLoggedIn) { %>
+
+          <!-- SIGN UP -->
+          <li>
+            <a href="/signup"
+              class="px-4 py-2 rounded-full text-sm font-medium border border-white text-white hover:bg-white hover:text-red-500 transition-all duration-300">
+              Sign Up
+            </a>
+          </li>
+
+          <!-- LOGIN -->
+          <li>
+            <a href="/login"
+              class="px-5 py-2 rounded-full text-sm font-semibold bg-white text-red-500 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300">
+              Login
+            </a>
+          </li>
+
+          <% } else { %>
+
+            <!-- LOGOUT -->
+            <li>
+              <form action="/logout" method="POST">
+                <button
+                  class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border border-white text-white hover:bg-white hover:text-red-500 transition-all duration-300">
+                  <i class="fas fa-sign-out-alt text-xs"></i>
+                  Logout
+                </button>
+              </form>
+            </li>
+
+            <% } %>
+
+      </ul>
+
+    </div>
+  </nav>
+</header>

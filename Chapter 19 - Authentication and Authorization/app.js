@@ -5,6 +5,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
+const { default: mongoose } = require('mongoose');
 const DB_PATH = "mongodb+srv://root:mongodb@completecoding.jdagmyl.mongodb.net/airbnb?appName=CompleteCoding";
 
 //Local Module
@@ -13,7 +14,6 @@ const hostRouter = require("./routes/hostRouter");
 const authRouter = require("./routes/authRouter");
 const rootDir = require("./utils/pathUtil");
 const errorsController = require("./controllers/errors");
-const { default: mongoose } = require('mongoose');
 
 const app = express();
 
@@ -53,7 +53,7 @@ app.use("/host", (req, res, next) => {
 });
 
 app.use("/host", hostRouter);
-app.use(express.static(path.join(rootDir, 'public')))
+app.use(express.static(path.join(rootDir, 'public')));
 app.use(errorsController.pageNotFound);
 
 const PORT = 3000;

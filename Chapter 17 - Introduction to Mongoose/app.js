@@ -3,13 +3,13 @@ const path = require('path');
 
 // External Module
 const express = require('express');
+const { default: mongoose } = require('mongoose');
 
 //Local Module
 const storeRouter = require("./routes/storeRouter");
 const hostRouter = require("./routes/hostRouter");
 const rootDir = require("./utils/pathUtil");
 const errorsController = require("./controllers/errors");
-const { default: mongoose } = require('mongoose');
 
 const app = express();
 
@@ -20,7 +20,7 @@ app.use(express.urlencoded());
 app.use(storeRouter);
 app.use("/host", hostRouter);
 
-app.use(express.static(path.join(rootDir, 'public')))
+app.use(express.static(path.join(rootDir, 'public')));
 
 app.use(errorsController.pageNotFound);
 
