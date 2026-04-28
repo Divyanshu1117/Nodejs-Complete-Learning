@@ -1,4 +1,5 @@
 const Home = require("../models/home");
+const fs = require("fs");
 
 exports.getAddHome = (req, res, next) => {
   res.render("host/edit-home", {
@@ -53,7 +54,7 @@ exports.postAddHome = (req, res, next) => {
   }
 
   const photo = req.file.path;
-  
+
   const home = new Home({ houseName, price, location, rating, photo, description });
   home.save().then(() => {
     console.log('Home Saved Successfully');
@@ -62,14 +63,26 @@ exports.postAddHome = (req, res, next) => {
 };
 
 exports.postEditHome = (req, res, next) => {
-  const { id, houseName, price, location, rating, photo, description } = req.body;
+  const { id, houseName, price, location, rating, description } = req.body;
+  // const photo = req.file.path;
   Home.findById(id).then((home) => {
     home.houseName = houseName;
     home.price = price;
     home.location = location;
     home.rating = rating;
-    home.photo = photo;
     home.description = description;
+
+    if (req.file) {
+      fs.unlink(home.photo, (err) => {
+        if (err) {
+          console.log("Error while deleting old photo ", err);
+        } else {
+          console.log("Old photo deleted successfully");
+        }
+      });
+      home.photo = req.file.path;
+    }
+
     home.save().then((result) => {
       console.log('Home updated ', result);
     }).catch(err => {
