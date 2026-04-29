@@ -13,8 +13,8 @@ const todoItemSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
+},
 
-    timestamps: true,
-});
+    { timestamps: true });
 
 module.exports = mongoose.model('TodoItem', todoItemSchema);

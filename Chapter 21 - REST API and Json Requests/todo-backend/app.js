@@ -4,6 +4,7 @@ const path = require('path');
 // External Module
 const express = require('express');
 const { default: mongoose } = require('mongoose');
+const cors = require('cors');
 const DB_PATH = "mongodb+srv://root:mongodb@completecoding.jdagmyl.mongodb.net/todo?appName=CompleteCoding";
 
 //Local Module
@@ -13,7 +14,9 @@ const errorsController = require('./controllers/errors');
 const app = express();
 
 app.use(express.urlencoded());
-app.use(express.static(path.join(rootDir, 'public')));
+app.use(express.json());
+app.use(cors());
+
 app.use("/api/todo", todoItemsRouter);
 
 app.use(errorsController.pageNotFound);
