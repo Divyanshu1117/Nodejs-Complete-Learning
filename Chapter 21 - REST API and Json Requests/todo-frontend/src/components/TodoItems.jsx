@@ -1,7 +1,8 @@
+import PropTypes from "prop-types";
 import TodoItem from "./TodoItem";
 
 const TodoItems = ({ todoItems, onDeleteClick, onToggleComplete }) => {
-  // Group items by completion status
+
   const pendingItems = todoItems.filter((item) => !item.completed);
   const completedItems = todoItems.filter((item) => item.completed);
 
@@ -50,6 +51,19 @@ const TodoItems = ({ todoItems, onDeleteClick, onToggleComplete }) => {
       )}
     </div>
   );
+};
+
+TodoItems.propTypes = {
+  todoItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      name: PropTypes.string.isRequired,
+      dueDate: PropTypes.string,
+      completed: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  onDeleteClick: PropTypes.func.isRequired,
+  onToggleComplete: PropTypes.func.isRequired,
 };
 
 export default TodoItems;
